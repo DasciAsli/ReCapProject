@@ -16,31 +16,7 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EFCarDal : EFEntityRepositoryBase<Car, ReCapProjectContext>, ICarDal
     {
-        ICheckCarDal _checkCarDal;
-        public EFCarDal(ICheckCarDal checkCarDal)
-        {
-            _checkCarDal = checkCarDal;
-        }
-
-        public void Add(Car entity)
-        {
-            if (_checkCarDal.IfCheckTrue(entity))
-            {
-                using (ReCapProjectContext context = new ReCapProjectContext())
-                {
-                    var addedEntity = context.Entry(entity);
-                    addedEntity.State = EntityState.Added;
-                    context.SaveChanges();
-                }
-                Console.WriteLine("Kayıt başarılı");
-
-            }
-            else
-            {
-                Console.WriteLine("Kayıt başarısız.");
-            }
-
-        }
+        
 
         public List<CarDetailDto> GetCarDetails()
         {

@@ -22,8 +22,14 @@ namespace Business.Concrete
 
         public IResult Add(Car car)
         {
-            _cardal.Add(car);
-            return new SuccessResult(Messages.CarAdded);
+            if (car.Description.Length>2 && car.DailyPrice >0)
+            {
+                _cardal.Add(car);
+                return new SuccessResult(Messages.CarAdded);
+            }
+
+            return new ErrorResult("Araba ekleme işlemi başarısız");
+            
             
         }
 
