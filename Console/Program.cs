@@ -24,7 +24,7 @@ internal class Program
     private static void CarDetailsTest()
     {
         CarManager carManager = new CarManager(new EFCarDal(new CheckCarDal()));
-        foreach (var car in carManager.GetCarDetails())
+        foreach (var car in carManager.GetCarDetails().Data)
         {
             Console.WriteLine("--------------------");
             Console.WriteLine(car.Description + "\n" + car.BrandName + "\n" + car.ColorName + "\n" + car.DailyPrice);
@@ -35,17 +35,17 @@ internal class Program
     {
         ColorManager colorManager = new ColorManager(new EFColorDal());
       
-        foreach (var color in colorManager.GetAll())
+        foreach (var color in colorManager.GetAll().Data)
         {
             Console.WriteLine(color.ColorName);
         }
 
 
-        Color color4 = new Color {ColorId=4, ColorName = "Mor" };
+        Color color4 = new Color {ColorId=4, ColorName = "Fuşya" };
         colorManager.Update(color4);
         Console.WriteLine("*****************");
 
-        foreach (var color in colorManager.GetAll())
+        foreach (var color in colorManager.GetAll().Data)
         {
             Console.WriteLine(color.ColorName);
         }
@@ -54,7 +54,7 @@ internal class Program
     private static void BrandTest()
     {
         BrandManager brandManager = new BrandManager(new EFBrandDal());
-        foreach (var brand in brandManager.GetAll())
+        foreach (var brand in brandManager.GetAll().Data)
         {
             Console.WriteLine(brand.BrandName);
         }
@@ -64,7 +64,7 @@ internal class Program
     {
         Car car1 = new Car() { BrandId = 2, ColorId = 2, ModelYear = new DateTime(2019, 2, 1), Description = "HATA BOYA EZİK ÇİZİK GÖÇÜK VS YOKTUR", DailyPrice = 50 };
         CarManager carManager = new CarManager(new EFCarDal(new CheckCarDal()));
-        foreach (var car in carManager.GetAll())
+        foreach (var car in carManager.GetAll().Data)
         {
             Console.WriteLine(car.Description);
         }
