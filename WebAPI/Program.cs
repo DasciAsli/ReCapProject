@@ -1,5 +1,8 @@
-﻿using Business.Abstract;
+﻿using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using Business.Abstract;
 using Business.Concrete;
+using Business.DependencyResolvers.Autofac;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 
@@ -14,19 +17,31 @@ builder.Services.AddSwaggerGen();
 
 
 
-//IoC
-builder.Services.AddSingleton<ICarService, CarManager>(); 
-builder.Services.AddSingleton<ICarDal, EFCarDal>();
-builder.Services.AddSingleton<IBrandService, BrandManager>();
-builder.Services.AddSingleton<IBrandDal, EFBrandDal>();
-builder.Services.AddSingleton<IColorService, ColorManager>();
-builder.Services.AddSingleton<IColorDal, EFColorDal>();
-builder.Services.AddSingleton<ICustomerService, CustomerManager>();
-builder.Services.AddSingleton<ICustomerDal, EFCustomerDal>();
-builder.Services.AddSingleton<IUserService, UserManager>();
-builder.Services.AddSingleton<IUserDal, EfUserDal>();
-builder.Services.AddSingleton<IRentalService, RentalManager>();
-builder.Services.AddSingleton<IRentalDal, EFRentalDal>();
+//WebApi'nin kendi IoC Yapılandırmasını Kullanmak Icin
+//builder.Services.AddSingleton<ICarService, CarManager>(); 
+//builder.Services.AddSingleton<ICarDal, EFCarDal>();
+//builder.Services.AddSingleton<IBrandService, BrandManager>();
+//builder.Services.AddSingleton<IBrandDal, EFBrandDal>();
+//builder.Services.AddSingleton<IColorService, ColorManager>();
+//builder.Services.AddSingleton<IColorDal, EFColorDal>();
+//builder.Services.AddSingleton<ICustomerService, CustomerManager>();
+//builder.Services.AddSingleton<ICustomerDal, EFCustomerDal>();
+//builder.Services.AddSingleton<IUserService, UserManager>();
+//builder.Services.AddSingleton<IUserDal, EfUserDal>();
+//builder.Services.AddSingleton<IRentalService, RentalManager>();
+//builder.Services.AddSingleton<IRentalDal, EFRentalDal>();
+
+
+//Autofac IoC Yapılandırmasını Kullanmak Icin(.Net 6 Autofac Configuration)
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory())
+       .ConfigureContainer<ContainerBuilder>(builder =>
+       {
+           builder.RegisterModule(new AutofacBusinessModule());
+       });
+
+
+
+
 
 
 var app = builder.Build();
