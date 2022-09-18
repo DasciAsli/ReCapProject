@@ -42,15 +42,15 @@ internal class Program
         Console.WriteLine(customerManager.Add(new Customer { UserId = 1, CompanyName = "X" }).Message);
     }
 
-    private static void UserTest()
-    {
-        UserManager userManager = new UserManager(new EfUserDal());
-        userManager.Add(new User { FirstName = "Asli", LastName = "Sak", Email = "asli@gmail.com", Password = "123" });
-        foreach (var user in userManager.GetAll().Data)
-        {
-            Console.WriteLine(user.FirstName + " , " + user.LastName);
-        }
-    }
+    //private static void UserTest()
+    //{
+    //    UserManager userManager = new UserManager(new EfUserDal());
+    //    userManager.Add(new User { FirstName = "Asli", LastName = "Sak", Email = "asli@gmail.com", Password = "123" });
+    //    foreach (var user in userManager.GetAll().Data)
+    //    {
+    //        Console.WriteLine(user.FirstName + " , " + user.LastName);
+    //    }
+    //}
 
     private static void CarDetailsTest()
     {

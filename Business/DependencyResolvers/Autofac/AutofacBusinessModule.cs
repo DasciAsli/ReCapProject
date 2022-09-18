@@ -33,7 +33,7 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<EFCustomerDal>().As<ICustomerDal>().SingleInstance();
 
             builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
-            builder.RegisterType<EfUserDal>().As<IUserDal>().SingleInstance();
+            builder.RegisterType<EFUserDal>().As<IUserDal>().SingleInstance();
 
             builder.RegisterType<RentalManager>().As<IRentalService>().SingleInstance();
             builder.RegisterType<EFRentalDal>().As<IRentalDal>().SingleInstance();
