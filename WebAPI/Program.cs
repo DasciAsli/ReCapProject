@@ -3,6 +3,8 @@ using Autofac.Extensions.DependencyInjection;
 using Business.Abstract;
 using Business.Concrete;
 using Business.DependencyResolvers.Autofac;
+using Core.DependencyResolvers;
+using Core.Extensions;
 using Core.Utilities.IoC;
 using Core.Utilities.Security.Encryption;
 using Core.Utilities.Security.Jwt;
@@ -62,7 +64,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
         };
     });
-ServiceTool.Create(builder.Services);
+//ServiceTool.Create(builder.Services);
+//Aşağıda yazılan kod farklı modülleri apimize dahil etmemizi sağlar
+builder.Services.AddDependencyResolvers(new ICoreModule[] {
+    new CoreModule()
+});
 
 
 
