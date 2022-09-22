@@ -47,7 +47,6 @@ builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory())
        });
 
 //Jwt
-builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
