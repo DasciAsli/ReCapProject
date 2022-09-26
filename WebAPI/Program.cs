@@ -39,6 +39,10 @@ builder.Services.AddSwaggerGen();
 //builder.Services.AddSingleton<IRentalDal, EFRentalDal>();
 
 
+//CORS Injection
+builder.Services.AddCors();
+
+
 //Autofac IoC Yapılandırmasını Kullanmak Icin(.Net 6 Autofac Configuration)
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory())
        .ConfigureContainer<ContainerBuilder>(builder =>
@@ -80,6 +84,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+//Cors Configure
+app.UseCors(builder => builder.WithOrigins("http://localhost:5200").AllowAnyHeader());
 
 app.UseHttpsRedirection();
 
