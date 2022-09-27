@@ -1,6 +1,8 @@
 ﻿using Core.DataAccess.EntityFramework;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +11,24 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EFCustomerDal:EFEntityRepositoryBase<Customer,ReCapProjectContext>,ICustomerDal
+    public class EFCustomerDal : EFEntityRepositoryBase<Customer, ReCapProjectContext>, ICustomerDal
     {
+        public List<CustomerDetailDto> GetCustomerDetails()
+        {
+            using (ReCapProjectContext context = new ReCapProjectContext())
+            {
+                var result = from customer in context.Customers
+                             join user in context.Users
+                             on customer.UserId equals user.Id
+                             select new CustomerDetailDto
+                             {
+                                 CustomerId = customer.CustomerId,
+                                 CustomerName = user.FirstName + " " + user.LastName,
+                                 CompanyName = customer.CompanyName
+                             };
+                return result.ToList();
+            }
+            
+        }
     }
 }

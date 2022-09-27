@@ -47,6 +47,7 @@ namespace Business.Constants
         public static string CustomerUpdated = "Müşteri güncellendi";
         public static string CustomersListed = "Müşteriler listelendi";
         public static string CustomerGetById = "Müşteri Id'ye göre getirildi";
+        public static string CustomerDetailsListed = "Müşteri detayları listelendi";
 
 
         //RentalMessages
@@ -55,6 +56,7 @@ namespace Business.Constants
         public static string RentalUpdated = "Kiralama kaydı güncellendi";
         public static string RentalsListed = "Kiralama kayıtları listelendi";
         public static string RentalGetById = "Kiralama kaydı Id'ye göre getirildi";
+        public static string RentalDetailsListed = "Kiralamaların detayları listelendi";
 
         //ImageMessages
         public static string ImageAdded = "Resim eklendi";
@@ -71,6 +73,7 @@ namespace Business.Constants
         public static string SuccessfulLogin = "Başarılı giriş";
         public static string UserAlreadyExists = "Kullanıcı zaten mevcut";
         public static string AuthorizationDenied = "Yetkiniz yok";
+        
     }
 }
 

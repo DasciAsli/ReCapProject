@@ -86,7 +86,7 @@ if (app.Environment.IsDevelopment())
 }
 
 //Cors Configure
-app.UseCors(builder => builder.WithOrigins("http://localhost:5200").AllowAnyHeader());
+app.UseCors(builder => builder.WithOrigins("http://localhost:5200", "http://localhost:5111").AllowAnyHeader());
 
 app.UseHttpsRedirection();
 
