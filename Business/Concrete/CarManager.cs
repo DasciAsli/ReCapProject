@@ -57,16 +57,16 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarDetailDto>>(_cardal.GetCarDetails(),Messages.CarsDetailsListed) ;
         }
 
-        public IDataResult<List<Car>> GetCarsByBrandId(int BrandId)
+        public IDataResult<List<CarDetailDto>> GetCarsByBrandId(int brandId)
         {
 
-            return new SuccessDataResult<List<Car>>(_cardal.GetAll(c => c.BrandId == BrandId), Messages.CarsByBrandIdListed);
+            return new SuccessDataResult<List<CarDetailDto>>(_cardal.GetCarsDetailsByBrandId(brandId), Messages.CarsByBrandIdListed);
         }
 
-        public IDataResult<List<Car>> GetCarsByColorId(int ColorId)
+        public IDataResult<List<Car>> GetCarsByColorId(int colorId)
         {
             
-            return new SuccessDataResult<List<Car>>(_cardal.GetAll(c => c.ColorId == ColorId),Messages.CarsByColorIdListed);
+            return new SuccessDataResult<List<Car>>(_cardal.GetAll(c => c.ColorId == colorId),Messages.CarsByColorIdListed);
         }
 
         public IResult Update(Car car)
