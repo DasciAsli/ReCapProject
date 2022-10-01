@@ -37,12 +37,10 @@ namespace DataAccess.Concrete.EntityFramework
                               Description=c.Description
                             };
                 return result.ToList();
-
-
             } 
         }
 
-        public List<CarDetailDto> GetCarsDetailsByBrandId(int id)
+        public List<CarDetailDto> GetCarsDetailsByBrandId(int brandId)
         {
             using (ReCapProjectContext context = new ReCapProjectContext())
             {
@@ -51,7 +49,7 @@ namespace DataAccess.Concrete.EntityFramework
                              on c.BrandId equals b.BrandId
                              join j in context.Colors
                              on c.ColorId equals j.ColorId
-                             where b.BrandId==id
+                             where b.BrandId== brandId
                              select new CarDetailDto
                              {
                                  CarId = c.CarId,
@@ -62,10 +60,31 @@ namespace DataAccess.Concrete.EntityFramework
                                  Description = c.Description
                              };
                 return result.ToList();
-
-
             }
 
+        }
+
+        public List<CarDetailDto> GetCarsDetailsByColorId(int colorId)
+        {
+            using (ReCapProjectContext context = new ReCapProjectContext())
+            {
+                var result = from c in context.Cars
+                             join b in context.Brands
+                             on c.BrandId equals b.BrandId
+                             join j in context.Colors
+                             on c.ColorId equals j.ColorId
+                             where j.ColorId == colorId
+                             select new CarDetailDto
+                             {
+                                 CarId = c.CarId,
+                                 ColorName = j.ColorName,
+                                 BrandName = b.BrandName,
+                                 ModelYear = c.ModelYear,
+                                 DailyPrice = c.DailyPrice,
+                                 Description = c.Description
+                             };
+                return result.ToList();
+            }
         }
     }
 }
