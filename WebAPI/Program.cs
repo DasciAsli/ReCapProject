@@ -90,6 +90,9 @@ app.UseCors(builder => builder.WithOrigins("http://localhost:5200", "http://loca
 
 app.UseHttpsRedirection();
 
+//Resimler gibi statik dosyaları sunabilmek için önemli!!!
+app.UseStaticFiles();
+
 app.UseAuthentication();
 
 app.UseAuthorization();

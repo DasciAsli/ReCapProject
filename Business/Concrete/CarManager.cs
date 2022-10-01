@@ -86,5 +86,10 @@ namespace Business.Concrete
             Add(car);
             return null;
         }
+
+        public IDataResult<CarDetailDto> GetCarDetailsByCarId(int carId)
+        {
+            return new SuccessDataResult<CarDetailDto>(_cardal.GetCarDetailsByCarId(carId), Messages.CarDetailsByCarIdListed);
+        }
     }
 }
