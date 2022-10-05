@@ -75,7 +75,12 @@ namespace Business.Constants
         public static string SuccessfulLogin = "Başarılı giriş";
         public static string UserAlreadyExists = "Kullanıcı zaten mevcut";
         public static string AuthorizationDenied = "Yetkiniz yok";
-        
+
+
+        //CreditCardInformationMessages
+        public static string CreditCardInformationAdded="Kredi kartı bilgisi eklendi";
+        public static string CreditCardInformationDeleted="Kredi kartı bilgisi silindi";
+        public static string CreditCardInformationUpdated="Kredi kartı bilgisi güncellendi";
     }
 }
 

@@ -33,6 +33,9 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<CustomerManager>().As<ICustomerService>().SingleInstance();
             builder.RegisterType<EFCustomerDal>().As<ICustomerDal>().SingleInstance();
 
+            builder.RegisterType<CreditCardInformationManager>().As<ICreditCardInformationService>().SingleInstance();
+            builder.RegisterType<EFCreditCardInformationDal>().As<ICreditCardInformationDal>().SingleInstance();
+
             builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
             builder.RegisterType<EFUserDal>().As<IUserDal>().SingleInstance();
 
