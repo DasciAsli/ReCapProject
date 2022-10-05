@@ -58,6 +58,7 @@ namespace Business.Constants
         public static string RentalsListed = "Kiralama kayıtları listelendi";
         public static string RentalGetById = "Kiralama kaydı Id'ye göre getirildi";
         public static string RentalDetailsListed = "Kiralamaların detayları listelendi";
+        public static string RentalsGetByCarIdListed = "Kiralama kayıtları araba id'sine göre listelendi";
 
         //ImageMessages
         public static string ImageAdded = "Resim eklendi";

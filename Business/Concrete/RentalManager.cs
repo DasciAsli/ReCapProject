@@ -43,7 +43,12 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(), Messages.RentalsListed);
         }
 
-        public IDataResult<Rental> GetById(int rentalId)
+        public IDataResult<List<RentalDetailDto>> GetRentalsByCarId(int carId)
+        {
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalsByCarId(carId), Messages.RentalsGetByCarIdListed);
+        }
+
+        public IDataResult<Rental> GetByRentalId(int rentalId)
         {
             return new SuccessDataResult<Rental>(_rentalDal.Get(r => r.RentalId == rentalId),Messages.RentalGetById);
         }
