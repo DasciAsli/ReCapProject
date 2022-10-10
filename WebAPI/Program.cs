@@ -85,6 +85,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+//Kendi yazdigimiz exception middleware'i dahil ediyoruz yasam döngüsüne
+app.ConfigureCustomExceptionMiddleware();
+
 //Cors Configure
 app.UseCors(builder => builder.WithOrigins("http://localhost:5200", "http://localhost:5111").AllowAnyHeader());
 
