@@ -69,6 +69,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarDetailDto>>(_cardal.GetCarsDetailsByColorId(colorId),Messages.CarsDetailsByColorIdListed);
         }
 
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Update(Car car)
         {
             _cardal.Update(car);
@@ -90,6 +91,11 @@ namespace Business.Concrete
         public IDataResult<CarDetailDto> GetCarDetailsByCarId(int carId)
         {
             return new SuccessDataResult<CarDetailDto>(_cardal.GetCarDetailsByCarId(carId), Messages.CarDetailsByCarIdListed);
+        }
+
+        public IDataResult<Car> GetCarByCarId(int carId)
+        {
+            return new SuccessDataResult<Car>(_cardal.Get(c => c.CarId == carId), Messages.CarByCarIdFiltered); 
         }
     }
 }

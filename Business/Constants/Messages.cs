@@ -19,6 +19,7 @@ namespace Business.Constants
         public static string CarsDetailsByBrandIdListed = "Marka Id'ye göre arabaların detayları listelendi";
         public static string CarsDetailsByColorIdListed = "Renk Id'ye göre arabaların detayları listelendi";
         public static string CarDetailsByCarIdListed = "Araba Id'ye göre arabanın detayları getirildi";
+        public static string CarByCarIdFiltered = "Araba Id'ye göre araba getirildi";
 
         //ColorMessages
         public static string ColorAdded = "Renk eklendi";
@@ -81,6 +82,7 @@ namespace Business.Constants
         public static string CreditCardInformationAdded="Kredi kartı bilgisi eklendi";
         public static string CreditCardInformationDeleted="Kredi kartı bilgisi silindi";
         public static string CreditCardInformationUpdated="Kredi kartı bilgisi güncellendi";
+        
     }
 }
 
